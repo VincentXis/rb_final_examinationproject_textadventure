@@ -12,4 +12,6 @@ public interface Enemy {
     String die();
 
     String attack();
+
+    String enemyDefeatedMessage();
 }

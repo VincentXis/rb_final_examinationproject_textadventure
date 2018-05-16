@@ -30,4 +30,9 @@ public class NoEnemy implements Enemy {
     public String attack() {
         return "";
     }
+
+    @Override
+    public String enemyDefeatedMessage() {
+        return "";
+    }
 }

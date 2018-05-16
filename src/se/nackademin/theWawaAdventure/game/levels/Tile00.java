@@ -1,4 +1,4 @@
-package se.nackademin.theWawaAdventure.gameboard.levels;
+package se.nackademin.theWawaAdventure.game.levels;
 
 import se.nackademin.theWawaAdventure.enemy.Enemy;
 import se.nackademin.theWawaAdventure.enemy.NoEnemy;

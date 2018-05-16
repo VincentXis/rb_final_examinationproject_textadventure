@@ -3,7 +3,7 @@ package se.nackademin.theWawaAdventure.player;
 import se.nackademin.theWawaAdventure.item.Item;
 
 public class Player {
-    boolean isAlive;
+    private boolean isAlive;
     private Inventory inventory;
 
     public Player() {

@@ -1,4 +1,4 @@
-package se.nackademin.theWawaAdventure.gameboard.levels;
+package se.nackademin.theWawaAdventure.game.levels;
 
 import se.nackademin.theWawaAdventure.enemy.Enemy;
 import se.nackademin.theWawaAdventure.enemy.NoEnemy;
@@ -7,11 +7,11 @@ import se.nackademin.theWawaAdventure.item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tile13 implements Level {
+public class Tile02 implements Level {
     private List<Item> container = new ArrayList<>();
     private Enemy enemy;
 
-    public Tile13() {
+    public Tile02() {
         enemy = new NoEnemy();
     }
 
@@ -32,4 +32,3 @@ public class Tile13 implements Level {
         return enemy;
     }
 }
-

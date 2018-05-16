@@ -37,4 +37,9 @@ public class Squirrel implements Enemy {
     public String attack() {
         return "The Squirrel stabs you with the flat side of its knife!";
     }
+
+    @Override
+    public String enemyDefeatedMessage() {
+        return "there's a hole in the ground where the squirrel used to be. I wounder how the knife is doing.";
+    }
 }

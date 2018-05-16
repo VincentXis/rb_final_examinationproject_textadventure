@@ -37,4 +37,9 @@ public class Mummy implements Enemy {
     public String attack() {
         return "the mummy curses the shit out of you! HAH!";
     }
+
+    @Override
+    public String enemyDefeatedMessage() {
+        return "the air feels less dry now that the mummy is gone.";
+    }
 }

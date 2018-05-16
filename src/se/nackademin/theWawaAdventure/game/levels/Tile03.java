@@ -1,18 +1,18 @@
-package se.nackademin.theWawaAdventure.gameboard.levels;
+package se.nackademin.theWawaAdventure.game.levels;
 
 import se.nackademin.theWawaAdventure.enemy.Enemy;
-import se.nackademin.theWawaAdventure.enemy.NoEnemy;
+import se.nackademin.theWawaAdventure.enemy.Squirrel;
 import se.nackademin.theWawaAdventure.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tile10 implements Level {
+public class Tile03 implements Level {
     private List<Item> container = new ArrayList<>();
     private Enemy enemy;
 
-    public Tile10() {
-        enemy = new NoEnemy();
+    public Tile03() {
+        enemy = new Squirrel();
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Tile10 implements Level {
     @Override
     public String getDescription() {
         String description = "You wake up in a forest, its kind of chilly and you dont know why you are here\n";
-        if (container.size() >0)
+        if (container.size() > 0)
             description = description + container.get(0).getDescription();
         return description;
     }
@@ -32,3 +32,4 @@ public class Tile10 implements Level {
         return enemy;
     }
 }
+
