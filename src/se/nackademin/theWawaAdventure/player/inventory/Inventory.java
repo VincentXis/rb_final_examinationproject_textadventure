@@ -1,6 +1,6 @@
-package se.nackademin.theWawaAdventure.inventory.model;
+package se.nackademin.theWawaAdventure.player.inventory;
 
-import se.nackademin.theWawaAdventure.inventory.InventoryManager;
+import se.nackademin.theWawaAdventure.item.Item;
 
 import java.util.List;
 

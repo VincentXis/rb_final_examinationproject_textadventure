@@ -4,6 +4,6 @@ import se.nackademin.theWawaAdventure.player.model.Player;
 
 public class PlayerManager {
     public static Player createNewPlayer(String name) {
-        return new Player(name);
+        return new Player();
     }
 }

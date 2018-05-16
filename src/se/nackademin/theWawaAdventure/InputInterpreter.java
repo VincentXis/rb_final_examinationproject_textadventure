@@ -44,7 +44,11 @@ public class InputInterpreter {
                 break;
             case "drop":
                 if (isValidLength(2))
-                    return new Action.ActionBuilder(inputData[0]).argTwo(inputData[1]).build();
+                    return new Action.ActionBuilder(inputData[0]).argOne(inputData[1]).build();
+                break;
+            case "steal":
+                if (isValidLength(2))
+                    return new Action.ActionBuilder(inputData[0]).argOne(inputData[1]).build();
                 break;
             case "use":
                 if (isValidLength(4) && isValidModifier())
@@ -84,13 +88,13 @@ public class InputInterpreter {
      */
     private boolean isValidDirection() {
         switch (inputData[1].toLowerCase()) {
-            case "forward":
+            case "north":
                 return true;
-            case "back":
+            case "south":
                 return true;
-            case "left":
+            case "west":
                 return true;
-            case "right":
+            case "east":
                 return true;
             default:
                 return false;
@@ -99,7 +103,7 @@ public class InputInterpreter {
 
     /**
      * checks the length of the input data before building an action to avoid index out of bounds problems later.
-     * eg. 'go forward' has a length of 2 and would pass, when 'go' with a length of 1 would fail the test.
+     * eg. 'go north' has a length of 2 and would pass, when 'go' with a length of 1 would fail the test.
      */
     private boolean isValidLength(int minLength) {
         return inputData.length >= minLength;
@@ -120,7 +124,8 @@ public class InputInterpreter {
                         "the left of the action and a description where needed. " +
                         "(the actions are not case sensitive)\n" +
                         "\tValid actions are the following:\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s",
-                1, "go, eg. go forward, go back etc.",
+                1, "go, eg. go north, go south etc.",
+                1, "steal, eg. 'steal fork'",
                 1, "drop, drop something in your inventory eg. drop hammer",
                 3, "use, use an item on something in the room eg. 'use sword on troll' or 'use torch on bush' do not forget to write 'on'",
                 0, "quit, quit the application",
