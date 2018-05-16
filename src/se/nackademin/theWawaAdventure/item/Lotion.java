@@ -13,19 +13,19 @@ public class Lotion implements Item {
 
     @Override
     public String getDescription() {
-        return "a half empty and rather slippery bottle fo lotion.";
+        return "under a bush you can see a half empty and rather slippery bottle fo lotion.";
     }
 
     @Override
     public String getPickupDescription() {
-        return "you don't know why you want it... but you do! ALOT! (You're so weird) " +
+        return "There it is... the lotion you don't know why you want it... but you do! ALOT! (You're so weird) " +
                 "\nYou pick up the bottle of lotion and put it in your front right pocket without hesitation.";
     }
 
     @Override
     public String getDropDescription() {
-        return "you place the bottle of lotion on the ground, thinking 'You're not the boss of me' while looking away." +
-                "\nyou hear the bottle sob slightly before it proceeds to sink into the abyss";
+        return "You place the bottle of lotion on the ground, thinking 'You're not the boss of me' while looking away." +
+                "\nthe bottle sobs slightly before it proceeds to sink into the abyss";
     }
 
     @Override
@@ -46,5 +46,11 @@ public class Lotion implements Item {
         return "You missed the " + target + "... What an embarrassment to your kind. Seems you imagined the white streak\n" +
                 "in your excitement... the lid wasn't even open.... the " +target+ " sighs\n" +
                 "(if it has lungs) if not it facepalms at you (if it has all the right bits for that gesture) ";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n", getId(), getName(), getDescription(), getPickupDescription(),
+                getDropDescription(), getUseDescription("test"), getUseSuccess("test"), getUseFailure("test"));
     }
 }

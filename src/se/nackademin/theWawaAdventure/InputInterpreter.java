@@ -46,7 +46,7 @@ public class InputInterpreter {
                 if (isValidLength(2))
                     return new Action.ActionBuilder(inputData[0]).argOne(inputData[1]).build();
                 break;
-            case "steal":
+            case "take":
                 if (isValidLength(2))
                     return new Action.ActionBuilder(inputData[0]).argOne(inputData[1]).build();
                 break;
@@ -125,7 +125,7 @@ public class InputInterpreter {
                         "(the actions are not case sensitive)\n" +
                         "\tValid actions are the following:\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s",
                 1, "go, eg. go north, go south etc.",
-                1, "steal, eg. 'steal fork'",
+                1, "take, eg. 'take fork'",
                 1, "drop, drop something in your inventory eg. drop hammer",
                 3, "use, use an item on something in the room eg. 'use sword on troll' or 'use torch on bush' do not forget to write 'on'",
                 0, "quit, quit the application",

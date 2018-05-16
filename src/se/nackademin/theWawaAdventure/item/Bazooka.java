@@ -14,7 +14,8 @@ public class Bazooka implements Item {
 
     @Override
     public String getDescription() {
-        return "an innocent looking Bazooka with a single rocket beside it. The rocket has a picture of a cat on it...";
+        return "On the ground you can see an innocent looking Bazooka with a single rocket beside it. " +
+                "\nThe rocket has a picture of a cat on it...";
     }
 
     @Override
@@ -46,5 +47,11 @@ public class Bazooka implements Item {
     @Override
     public String getUseFailure(String target) {
         return "ABSOLUTELY nothing happened, what a waste of ammo. (stupid move if you ask me...)";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n%s\n\n", getId(), getName(), getDescription(), getPickupDescription(),
+                getDropDescription(), getUseDescription("test"), getUseSuccess("test"), getUseFailure("test"));
     }
 }
