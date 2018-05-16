@@ -1,5 +1,13 @@
 package se.nackademin.theWawaAdventure.actions;
 
+/**
+ * Actions are created from parsed user input data, the message field is to display information when something is wrong,
+ * the type determines what should be done, eg. quit or walk forward.
+ * argOne is the second word written by the user IF it exists and argTwo is the 4th word.
+ * the only action that requires 2 args is the 'use' action and the
+ * format is: 'use hammer(argOne) on troll(argTwo)' the word on is required but the 2nd and 4th word are what the action
+ * is about.
+ */
 public class Action {
     private final String type;
     private final String argOne;
@@ -30,7 +38,9 @@ public class Action {
         return message;
     }
 
-    // builder
+    /**
+     * Builder class for action, does nothing except create a new action instance.
+     */
     public static class ActionBuilder {
         private String type;
         private String argOne;
@@ -65,7 +75,7 @@ public class Action {
     }
 
     /**
-     * only used in developement
+     * only used in developement, returns a string of the member variables of the class.
      */
     @Override
     public String toString() {

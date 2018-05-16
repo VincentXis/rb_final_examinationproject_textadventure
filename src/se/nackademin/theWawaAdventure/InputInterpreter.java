@@ -2,24 +2,38 @@ package se.nackademin.theWawaAdventure;
 
 import se.nackademin.theWawaAdventure.actions.Action;
 
+/**
+ * This class is the interface between the game and the user what parses the input data and transforms that into something
+ * the game can understand.
+ */
 public class InputInterpreter {
     private String userInput;
     private String[] inputData;
 
-    // getter
-    public Action getAction(String userInput) {
 
+    /**
+     * this is where the game gets the parsed user input in the form of an action that controls the game.
+     */
+    public Action getAction(String userInput) {
         handleInput(userInput);
         Action action = createAction();
         clean();
         return action;
     }
 
+    /**
+     * simply makes user input lowercase and splits the sting into an array wherever there's a space,
+     * then initializes the member variables used in the class.
+     */
     private void handleInput(String userInput) {
         this.userInput = userInput.toLowerCase();
-        inputData = this.userInput.split(" ");
+        this.inputData = this.userInput.split(" ");
     }
 
+    /**
+     * creates an action depending on first word of each string the user inputs.
+     * returns an "invalid" action of the number or arguments are wrong for the action or if the actions doesn't exist.
+     */
     private Action createAction() {
         switch (inputData[0]) {
             case "go":

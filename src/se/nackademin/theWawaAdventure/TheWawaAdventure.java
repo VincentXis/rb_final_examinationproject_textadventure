@@ -3,6 +3,11 @@ package se.nackademin.theWawaAdventure;
 import se.nackademin.commandline.CommandLineInterface;
 import se.nackademin.theWawaAdventure.actions.Action;
 
+/**
+ * The main loop of the game is in this class and it pretty much is the nervous system where
+ * instances are passed around etc.
+ *
+ */
 public class TheWawaAdventure {
     private CommandLineInterface cli;
     private boolean runGame = true;
@@ -14,21 +19,25 @@ public class TheWawaAdventure {
     public void run() {
         while (runGame) {
             cli.write("What would you like to do?");
-            cli.askForInput();
+            cli.requestUserInput();
             handleUserInput();
         }
         cli.write("Thank you for playing this... game?");
     }
 
-    void handleUserInput() {
+    private void handleUserInput() {
         if (cli.getCurrentInputString().isEmpty()) return;
         Action action;
         try {
             action = interpreter.getAction(cli.getCurrentInputString());
-            cli.write(action.toString());
+            executeAction(action);
         } catch (Exception e) {
-            cli.write("Invalid action, write help for more information");
+            cli.write("Unexpected error: " + e);
         }
+    }
+
+    private void executeAction(Action action) {
+            cli.write(action.toString());
     }
 
 
