@@ -13,13 +13,13 @@ public class Player implements Serializable {
 
 
     // Constructor
-    private Player(String name) {
+    public Player(String name) {
         this.name = name;
         this.id = UUID.randomUUID();
         inventory = new Inventory();
     }
 
-    private Player(Inventory inventory, UUID id, String name) {
+    public Player(Inventory inventory, UUID id, String name) {
         this.inventory = inventory;
         this.id = id;
         this.name = name;
