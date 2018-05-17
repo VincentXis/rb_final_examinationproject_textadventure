@@ -14,7 +14,7 @@ public class Squirrel implements Enemy {
 
     @Override
     public String getDescription() {
-        return "a MEAN looking squirrel with a knife";
+        return "A MEAN looking Squirrel waving a knife at you!";
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Squirrel implements Enemy {
     @Override
     public String die() {
         isAlive = false;
-        return "the squirrel is no more, it's mega dead!. the knife leaves for a extended vacation.";
+        return "Your enemy is no more, it's mega dead!. the knife leaves for a extended vacation.";
     }
 
     @Override

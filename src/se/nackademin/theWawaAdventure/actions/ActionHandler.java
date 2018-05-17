@@ -28,6 +28,7 @@ public class ActionHandler {
                 takeAction(action);
                 break;
             case "use":
+                useAction(action);
                 break;
             case "help":
                 this.wawaAdventure.getView().writeMessage(action.getMessage());
@@ -70,18 +71,7 @@ public class ActionHandler {
     }
 
     private void useAction(Action action) {
-
+        this.gameBoard.useItem(action.getArgOne(), action.getArgTwo());
     }
 
-    private void helpAction(Action action) {
-
-    }
-
-    private void quitAction(Action action) {
-
-    }
-
-    private void resetAction(Action action) {
-
-    }
 }

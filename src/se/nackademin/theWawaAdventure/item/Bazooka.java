@@ -34,8 +34,8 @@ public class Bazooka implements Item {
 
     @Override
     public String getUseDescription(String target) {
-        return "You smile in the face (if it has one... you never know) of your enemy the '" + target +
-                "' and fire the rocket \nstraight in said face(again if it has one... AND!";
+        return "You smile in the face of(if it has one... you never know) your enemy the '" + target +
+                "' and fire a rocket \nstraight in said face(again if it has one... AND!";
     }
 
     @Override

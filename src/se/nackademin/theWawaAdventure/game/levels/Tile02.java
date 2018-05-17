@@ -32,7 +32,7 @@ public class Tile02 implements Level {
                 "'This is it! I'M RICH!!!' you yell in excitement. Looking around the room you realize that \n" +
                 "there's a massive parking lot to the south and even better! A McDonald's! You enter the 'restaurant'\n" +
                 "and spend your riches on ten cheeseburgers and a diet coke (got to watch that figure)\n" +
-                "Well fed and poor people again you go home and never think of this again.";
+                "Well fed and poor people again you go home and never think of this again. WAWAWAWA WAWAWAWA!";
     }
 
     public Enemy getEnemy() {

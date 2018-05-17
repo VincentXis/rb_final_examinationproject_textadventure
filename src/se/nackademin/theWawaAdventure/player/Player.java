@@ -17,29 +17,33 @@ public class Player {
 
     public String showInventory() {
         if (inventory.getItems().size() == 0)
-            return "your inventory is empty";
+            return "empty";
         StringBuilder sb = new StringBuilder();
         for (Item item : inventory.getItems()) {
             sb.append(item.getName());
+            sb.append(", ");
         }
         return sb.toString();
     }
 
     public String die() {
         isAlive = false;
-        return "You died... hard... lol";
+        return "You died... hard... game over... lol... wawa";
     }
 
-    public String useItem(String item, String target) {
-        return inventory.useItem(item, target);
+    public Item useItem(String itemName) {
+        return inventory.useItem(itemName);
     }
 
-    public String  dropItem(String item) {
+    public String dropItem(String item) {
         return inventory.dropItem(item);
     }
 
-    public String takeItem(Item item) {
-        return inventory.addItem(item);
+    public void takeItem(Item item) {
+        inventory.addItem(item);
     }
 
+    public boolean isAlive() {
+        return isAlive;
+    }
 }

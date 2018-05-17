@@ -29,7 +29,7 @@ public class Tile12 implements Level {
     @Override
     public String getDescription() {
         String description = "As you enter the area you notice that the ground has changed texture, apparently someone\n" +
-                "decided to cover the ground in wooden floor tiles, except for a spot in the middle where there's a bush.";
+                "decided to cover the ground in wooden floor tiles, except for a spot in the middle where there's a bush.\n";
         if (container.size() > 0)
             description = description + container.get(0).getDescription();
         return description;

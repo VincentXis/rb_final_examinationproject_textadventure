@@ -31,19 +31,27 @@ public class TheWawaAdventure {
     /**
      * This is the main loop that keeps the game alive until the console is shut down or until the user writes quit.
      * prevents the scene from being rendered every time the the user writes something. instead it waits until instructed to rerender.
+     * the application stops if the player reaches the final level or if the player dies
      */
     public void run() {
         while (runGame) {
-            view.describeScene(gameBoard.getCurrentLevel());
-            gameBoard.setNewScene(false);
-            while (!gameBoard.isNewScene()) {
-                cli.requestUserInput();
-                handleUserInput();
+            if (this.gameBoard.getCurrentPosition().equals(new Position(0, 2))) {
+                view.describeScene();
+                view.writeMessage("that's it... what did you expect?\n\n\nSee Ya!");
+                quit();
+            } else if (!gameBoard.getPlayer().isAlive()) {
+                quit();
+            } else {
+                view.describeScene();
+                gameBoard.setNewScene(false);
+                while (runGame && gameBoard.getPlayer().isAlive() && !gameBoard.isNewScene()) {
+                    view.showUI();
+                    cli.requestUserInput();
+                    handleUserInput();
+                }
+
             }
 
-            if (this.gameBoard.getCurrentPosition().equals(new Position(0, 2))) {
-                view.writeMessage("that's it... what did you expect?");
-            }
         }
     }
 

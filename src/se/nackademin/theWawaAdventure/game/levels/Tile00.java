@@ -30,7 +30,7 @@ public class Tile00 implements Level {
     @Override
     public String getDescription() {
         String description = "You are in a small clearing the trees around you look scary and it's kind of chilly here \n" +
-                "a wooden sign reads 'There's probably a treasure here somewhere'.";
+                "a wooden sign reads 'There's probably a treasure here somewhere'.\n";
         if (container.size() > 0)
             description = description + container.get(0).getDescription();
         return description;

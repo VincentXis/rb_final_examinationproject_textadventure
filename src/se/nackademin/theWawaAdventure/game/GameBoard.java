@@ -1,6 +1,6 @@
 package se.nackademin.theWawaAdventure.game;
 
-import se.nackademin.theWawaAdventure.TheWawaAdventure;
+import se.nackademin.theWawaAdventure.enemy.Enemy;
 import se.nackademin.theWawaAdventure.game.levels.*;
 import se.nackademin.theWawaAdventure.item.Item;
 import se.nackademin.theWawaAdventure.player.Player;
@@ -71,7 +71,7 @@ public class GameBoard {
         connectedTiles.put(tile01, List.of(pos02, pos11));
         connectedTiles.put(tile02, List.of(pos01, pos03));
         connectedTiles.put(tile03, List.of(pos02, pos13));
-        connectedTiles.put(tile10, List.of(pos01, pos11));
+        connectedTiles.put(tile10, List.of(pos00, pos11));
         connectedTiles.put(tile11, List.of(pos01, pos10, pos12));
         connectedTiles.put(tile12, List.of(pos11, pos13));
         connectedTiles.put(tile13, List.of(pos03, pos12));
@@ -160,5 +160,31 @@ public class GameBoard {
         } else {
             this.view.writeMessage("There is no such item here.");
         }
+    }
+    public void useItem(String itemName, String target) {
+        Item item = getPlayer().useItem(itemName);
+        Enemy enemy = getCurrentLevel().getEnemy();
+        if (item != null){
+            if(enemy.isAlive()) {
+                if (enemy.getType().equalsIgnoreCase(target)) {
+                    CombatSystem combatSystem = new CombatSystem(item, enemy);
+                    combatSystem.getFightScene().forEach(scene -> this.view.writeMessage(scene));
+                    if (combatSystem.isEnemyDefeated()) {
+                        this.view.writeMessage(getCurrentLevel().getEnemy().die());
+                        this.view.writeMessage("\n" + player.dropItem(itemName));
+
+                        return;
+                    } else {
+                        this.view.writeMessage(player.die());
+                        return;
+                    }
+                }
+                this.view.writeMessage("There is no " + target + " in this area");
+                return;
+            }
+            this.view.writeMessage("There is no target");
+            return;
+        }
+        this.view.writeMessage("You don't have: " + itemName + " in your inventory");
     }
 }

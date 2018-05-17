@@ -18,8 +18,8 @@ public class Lotion implements Item {
 
     @Override
     public String getPickupDescription() {
-        return "There it is... the lotion you don't know why you want it... but you do! ALOT! (You're so weird) " +
-                "\nYou pick up the bottle of lotion and put it in your front right pocket without hesitation.";
+        return "lotion, you don't know why you want it so... but you do! ALOT! (You're so weird) " +
+                "\nthe bottle fits perfectly in your front right pocket so you shove it down without hesitation.";
     }
 
     @Override
@@ -38,13 +38,13 @@ public class Lotion implements Item {
 
     @Override
     public String getUseSuccess(String target) {
-        return "IT'S SUPER EFFECTIVE! the " + target + "is now well lubricated. #latheredup #slipperyhands";
+        return "IT'S SUPER EFFECTIVE! the " + target + " is now well lubricated. #latheredup #slipperyhands";
     }
 
     @Override
     public String getUseFailure(String target) {
         return "You missed the " + target + "... What an embarrassment to your kind. Seems you imagined the white streak\n" +
-                "in your excitement... the lid wasn't even open.... the " +target+ " sighs\n" +
+                "in your excitement... the cap wasn't even open.... the " +target+ " sighs\n" +
                 "(if it has lungs) if not it facepalms at you (if it has all the right bits for that gesture) ";
     }
 

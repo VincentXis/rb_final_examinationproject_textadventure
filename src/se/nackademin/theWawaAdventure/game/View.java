@@ -2,7 +2,6 @@ package se.nackademin.theWawaAdventure.game;
 
 import se.nackademin.commandline.CommandLineInterface;
 import se.nackademin.theWawaAdventure.TheWawaAdventure;
-import se.nackademin.theWawaAdventure.actions.Action;
 import se.nackademin.theWawaAdventure.game.levels.Level;
 import se.nackademin.theWawaAdventure.game.levels.LevelDrawer;
 
@@ -12,27 +11,31 @@ public class View {
     private LevelDrawer levelDrawer = new LevelDrawer();
     private CommandLineInterface cli;
     private GameBoard gameBoard;
-    private String whatToDo = "What would you like to do?";
+    private String divider = "------------------------------------------------------------------------------------------------------------";
 
     public View(TheWawaAdventure wawaAdventure) {
         this.cli = wawaAdventure.getCli();
         this.gameBoard = wawaAdventure.getGameBoard();
     }
 
-    public void describeScene(Level currentLevel) {
-        String divOne = "************************************************************************************************************";
-        String divTwo = "------------------------------------------------------------------------------------------------------------";
-        String view = String.format("%s\n\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
-                divOne,
-                levelDrawer.drawLevel(currentLevel),
-                divTwo,
-                showPossibleDirections(),
-                divTwo,
-                gameBoard.getPlayer().showInventory(),
-                divTwo,
-                whatToDo
+    public void describeScene() {
+        String view = String.format("%s\n\n%s\n",
+                divider,
+                levelDrawer.drawLevel(gameBoard.getCurrentLevel())
         );
         cli.write(view);
+    }
+
+    public void showUI() {
+        cli.write(String.format("%s\n%s\n%s\nItems: %s | Targets: %s\n%s\n%s",
+                divider,
+                showPossibleDirections(),
+                divider,
+                gameBoard.getPlayer().showInventory(),
+                gameBoard.getCurrentLevel().getEnemy().getType(),
+                divider,
+                "What would you like to do?")
+        );
     }
 
     private String showPossibleDirections() {
@@ -52,4 +55,6 @@ public class View {
     public void writeMessage(String message) {
         cli.write(message);
     }
+
+
 }
