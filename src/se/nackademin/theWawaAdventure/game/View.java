@@ -1,15 +1,17 @@
 package se.nackademin.theWawaAdventure.game;
 
-import se.nackademin.commandline.CommandLineInterface;
+import se.nackademin.commandline.CommandLineWriter;
 import se.nackademin.theWawaAdventure.TheWawaAdventure;
-import se.nackademin.theWawaAdventure.game.levels.Level;
 import se.nackademin.theWawaAdventure.game.levels.LevelDrawer;
 
 import java.util.List;
 
+/**
+ * This class writes things to the console via the CommandLineInterface class
+ */
 public class View {
     private LevelDrawer levelDrawer = new LevelDrawer();
-    private CommandLineInterface cli;
+    private CommandLineWriter cli;
     private GameBoard gameBoard;
     private String divider = "------------------------------------------------------------------------------------------------------------";
 
@@ -34,12 +36,12 @@ public class View {
                 gameBoard.getPlayer().showInventory(),
                 gameBoard.getCurrentLevel().getEnemy().getType(),
                 divider,
-                "What would you like to do?")
+                "What would you like to do? type 'help' for options.")
         );
     }
 
     private String showPossibleDirections() {
-        List<String> directions = this.gameBoard.possibleDirections();
+        List<String> directions = this.gameBoard.getUtil().possibleDirectionStrings(this.gameBoard);
         if (directions.size() == 1)
             return "You can see a path leading to the " + directions.get(0) + " from here";
         StringBuilder message = new StringBuilder("You can see paths leading to the ");

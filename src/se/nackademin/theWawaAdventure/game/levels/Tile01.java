@@ -24,6 +24,7 @@ public class Tile01 implements Level {
         }
         return null;
     }
+
     @Override
     public String getDescription() {
         String description = "You can see something that looks like an old sacrificial altar at least that's what you think it is.\n";

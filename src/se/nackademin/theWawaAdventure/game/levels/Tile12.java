@@ -26,6 +26,7 @@ public class Tile12 implements Level {
         }
         return null;
     }
+
     @Override
     public String getDescription() {
         String description = "As you enter the area you notice that the ground has changed texture, apparently someone\n" +

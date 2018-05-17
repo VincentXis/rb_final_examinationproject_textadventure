@@ -1,13 +1,15 @@
 package se.nackademin.theWawaAdventure.actions;
 
-import se.nackademin.commandline.CommandLineInterface;
 import se.nackademin.theWawaAdventure.TheWawaAdventure;
 import se.nackademin.theWawaAdventure.game.GameBoard;
 import se.nackademin.theWawaAdventure.game.Position;
 
+/**
+ * This class takes an action and tries to execute it. It informs the game board if changes need to be made,
+ * such as the move or use action.
+ */
 public class ActionHandler {
     private GameBoard gameBoard;
-    private CommandLineInterface cli;
     private TheWawaAdventure wawaAdventure;
 
     public ActionHandler(TheWawaAdventure wawaAdventure) {
@@ -15,7 +17,9 @@ public class ActionHandler {
         this.gameBoard = wawaAdventure.getGameBoard();
     }
 
-
+    /**
+     * Takes the action created by the user and passes it along to the appropriate method.
+     */
     public void executeAction(Action action) {
         switch (action.getType()) {
             case "go":
@@ -32,14 +36,13 @@ public class ActionHandler {
                 break;
             case "help":
                 this.wawaAdventure.getView().writeMessage(action.getMessage());
-                this.wawaAdventure.getGameBoard().setNewScene(true);
                 break;
             case "quit":
                 this.wawaAdventure.getView().writeMessage(action.getMessage());
                 this.wawaAdventure.getGameBoard().setNewScene(true);
                 this.wawaAdventure.quit();
                 break;
-                        }
+        }
     }
 
     private void moveAction(Action action) {
@@ -47,6 +50,21 @@ public class ActionHandler {
         this.gameBoard.move(newPos);
     }
 
+    private void dropAction(Action action) {
+        this.gameBoard.dropItem(action.getArgOne());
+    }
+
+    private void takeAction(Action action) {
+        this.gameBoard.takeItem(action.getArgOne());
+    }
+
+    private void useAction(Action action) {
+        this.gameBoard.useItem(action.getArgOne(), action.getArgTwo());
+    }
+
+    /**
+     * Creates a Position object with the value of the intended direction in relation to the current position
+     */
     private Position createPositionFromString(String direction) {
         Position currentPosition = this.gameBoard.getCurrentPosition();
         switch (direction) {
@@ -60,18 +78,6 @@ public class ActionHandler {
                 return new Position(currentPosition.getY(), currentPosition.getX() + 1);
         }
         return currentPosition;
-    }
-
-    private void dropAction(Action action) {
-        this.gameBoard.dropItem(action.getArgOne());
-    }
-
-    private void takeAction(Action action) {
-        this.gameBoard.takeItem(action.getArgOne());
-    }
-
-    private void useAction(Action action) {
-        this.gameBoard.useItem(action.getArgOne(), action.getArgTwo());
     }
 
 }

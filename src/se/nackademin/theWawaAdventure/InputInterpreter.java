@@ -118,7 +118,7 @@ public class InputInterpreter {
                 "There are several actions you can do, the minimum amount of arguments needed after the action will be",
                 "displayed to the left of the action and a description where needed. (the actions are not case sensitive)",
                 "Valid actions are the following:");
-        String commandHelp = String.format("\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n",
+        String commandInfo = String.format("\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n",
                 1, "go, eg. go north, go south etc.",
                 1, "take, eg. 'take fork'",
                 1, "drop, drop something in your inventory eg. drop hammer",
@@ -126,9 +126,8 @@ public class InputInterpreter {
                 0, "quit, quit the application",
                 0, "help, shows this message ;)"
         );
-        return String.format("%s%s", helpText, commandHelp);
+        return String.format("%s%s", helpText, commandInfo);
     }
-
 
     private String quitMessage() {
         String smallDiv = "------------------------------------";

@@ -24,6 +24,7 @@ public class Tile03 implements Level {
         }
         return null;
     }
+
     @Override
     public String getDescription() {
         String description = "This area looks more or less the same as the rest of the forest, massive trees bushes everywhere.\n" +

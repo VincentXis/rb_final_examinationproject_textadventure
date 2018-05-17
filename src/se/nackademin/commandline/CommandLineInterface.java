@@ -1,11 +1,14 @@
 package se.nackademin.commandline;
 
-public class CommandLineInterface implements CommandLineWriter{
+/**
+ * the mouth and ears of the application
+ */
+public class CommandLineInterface implements CommandLineWriter {
     private String currentInputString;
     private CommandLineListener listener;
 
     public CommandLineInterface() {
-        this.listener = new CommandLineListener(this);
+        this.listener = new CommandLineListener();
     }
 
     public void requestUserInput() {
