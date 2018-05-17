@@ -31,8 +31,8 @@ public class Lotion implements Item {
     @Override
     public String getUseDescription(String target) {
         return "You take the bottle of lotion out of your front left trouser pocket and aim it at your target!\n" +
-                "the " + target + " gasps!(if it can) " +
-                "You sucker punch the bottle in the belly, a white streak of stuff escapes (probably lotion... I hope it is...)\n" +
+                "the " + target + " gasps!(if it can) You sucker punch the bottle in the belly,\n" +
+                "a white streak of stuff escapes (probably lotion... I hope it is...)\n" +
                 "Some of it gets on your hand! BUT YOU DON'T CARE! Yelling 'GET MOIST' at the " +target+" and punch it again";
     }
 
