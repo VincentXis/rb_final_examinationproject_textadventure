@@ -21,14 +21,14 @@ public class Bazooka implements Item {
     @Override
     public String getPickupDescription() {
         return "Bazooka and say 'this could come in handy, I have to mind when I use it though... " +
-                "Rockets are rare in this part of the world.' " +
+                "\nRockets are rare in this part of the world.' " +
                 "\nThe weapon now resides the left back pocket of your trousers, which is impressive since " +
                 "\nthey don't look like they would fit a bazooka in there. Seems that pocket is larger on the inside.";
     }
 
     @Override
     public String getDropDescription() {
-        return "Bazooka, again you start talking to yourself 'farewell old friend I will avenge you' " +
+        return "You drop your bazooka, and yet again you start talking to yourself 'farewell old friend I will avenge you' " +
                 "\n\t(why would you avenge a bazooka? You're weird...)";
     }
 

@@ -15,7 +15,17 @@ public class Player {
         return inventory;
     }
 
-    public String die(){
+    public String showInventory() {
+        if (inventory.getItems().size() == 0)
+            return "your inventory is empty";
+        StringBuilder sb = new StringBuilder();
+        for (Item item : inventory.getItems()) {
+            sb.append(item.getName());
+        }
+        return sb.toString();
+    }
+
+    public String die() {
         isAlive = false;
         return "You died... hard... lol";
     }
@@ -24,7 +34,7 @@ public class Player {
         return inventory.useItem(item, target);
     }
 
-    public String dropItem(String item) {
+    public String  dropItem(String item) {
         return inventory.dropItem(item);
     }
 

@@ -40,6 +40,6 @@ public class Squirrel implements Enemy {
 
     @Override
     public String enemyDefeatedMessage() {
-        return "there's a hole in the ground where the squirrel used to be. I wounder how the knife is doing.";
+        return "a hole in the ground where the squirrel used to be. I wounder how the knife is doing.";
     }
 }

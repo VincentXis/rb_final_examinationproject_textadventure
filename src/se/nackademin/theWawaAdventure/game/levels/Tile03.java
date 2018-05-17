@@ -16,15 +16,22 @@ public class Tile03 implements Level {
     }
 
     @Override
-    public List<Item> getContainer() {
-        return container;
+    public Item getItem(String itemName) {
+        if (container.size() > 0) {
+            if (container.get(0).getName().equalsIgnoreCase(itemName)) {
+                return container.remove(0);
+            }
+        }
+        return null;
     }
-
     @Override
     public String getDescription() {
-        String description = "You wake up in a forest, its kind of chilly and you dont know why you are here\n";
-        if (container.size() > 0)
-            description = description + container.get(0).getDescription();
+        String description = "This area looks more or less the same as the rest of the forest, massive trees bushes everywhere.\n" +
+                "All the same really except... except for... ";
+        if (getEnemy().isAlive())
+            description = description + getEnemy().getDescription();
+        else
+            description = description + getEnemy().enemyDefeatedMessage();
         return description;
     }
 

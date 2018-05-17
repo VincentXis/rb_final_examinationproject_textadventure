@@ -16,16 +16,19 @@ public class Tile13 implements Level {
     }
 
     @Override
-    public List<Item> getContainer() {
-        return container;
+    public Item getItem(String itemName) {
+        if (container.size() > 0) {
+            if (container.get(0).getName().equalsIgnoreCase(itemName)) {
+                return container.remove(0);
+            }
+        }
+        return null;
     }
-
     @Override
     public String getDescription() {
-        String description = "You wake up in a forest, its kind of chilly and you dont know why you are here\n";
-        if (container.size() >0)
-            description = description + container.get(0).getDescription();
-        return description;
+        return "The air in this area makes your left earlobe feel warm... odd... ah well... there seems to be an owl nearby,\n" +
+                "that's where the quacking is coming from. When you look up you see a cloud that looks like frog wearing a shark fin.\n" +
+                "An owl barks in the distance.";
     }
 
     public Enemy getEnemy() {

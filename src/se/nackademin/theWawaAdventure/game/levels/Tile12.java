@@ -18,14 +18,19 @@ public class Tile12 implements Level {
     }
 
     @Override
-    public List<Item> getContainer() {
-        return container;
+    public Item getItem(String itemName) {
+        if (container.size() > 0) {
+            if (container.get(0).getName().equalsIgnoreCase(itemName)) {
+                return container.remove(0);
+            }
+        }
+        return null;
     }
-
     @Override
     public String getDescription() {
-        String description = "You wake up in a forest, its kind of chilly and you dont know why you are here\n";
-        if (container.size() >0)
+        String description = "As you enter the area you notice that the ground has changed texture, apparently someone\n" +
+                "decided to cover the ground in wooden floor tiles, except for a spot in the middle where there's a bush.";
+        if (container.size() > 0)
             description = description + container.get(0).getDescription();
         return description;
     }

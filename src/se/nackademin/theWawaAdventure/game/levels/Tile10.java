@@ -16,16 +16,18 @@ public class Tile10 implements Level {
     }
 
     @Override
-    public List<Item> getContainer() {
-        return container;
+    public Item getItem(String itemName) {
+        if (container.size() > 0) {
+            if (container.get(0).getName().equalsIgnoreCase(itemName)) {
+                return container.remove(0);
+            }
+        }
+        return null;
     }
-
     @Override
     public String getDescription() {
-        String description = "You wake up in a forest, its kind of chilly and you dont know why you are here\n";
-        if (container.size() >0)
-            description = description + container.get(0).getDescription();
-        return description;
+        return "The trees in this are are massive, there doesn't seem to be anything here. You feel hungry and like poor people,\n" +
+                "to bad that you didn't eat before coming into the forest... (dummy)";
     }
 
     public Enemy getEnemy() {

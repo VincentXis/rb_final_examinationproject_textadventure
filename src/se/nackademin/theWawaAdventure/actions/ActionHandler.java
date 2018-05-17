@@ -22,28 +22,28 @@ public class ActionHandler {
                 moveAction(action);
                 break;
             case "drop":
+                dropAction(action);
                 break;
             case "take":
+                takeAction(action);
                 break;
             case "use":
                 break;
             case "help":
                 this.wawaAdventure.getView().writeMessage(action.getMessage());
+                this.wawaAdventure.getGameBoard().setNewScene(true);
                 break;
             case "quit":
                 this.wawaAdventure.getView().writeMessage(action.getMessage());
+                this.wawaAdventure.getGameBoard().setNewScene(true);
                 this.wawaAdventure.quit();
                 break;
-            case "reset":
-                this.wawaAdventure.getView().writeMessage(action.getMessage());
-                this.wawaAdventure.reset();
-                break;
-        }
+                        }
     }
 
     private void moveAction(Action action) {
         Position newPos = createPositionFromString(action.getArgOne());
-        this.gameBoard.movePlayer(newPos);
+        this.gameBoard.move(newPos);
     }
 
     private Position createPositionFromString(String direction) {
@@ -62,11 +62,11 @@ public class ActionHandler {
     }
 
     private void dropAction(Action action) {
-
+        this.gameBoard.dropItem(action.getArgOne());
     }
 
     private void takeAction(Action action) {
-
+        this.gameBoard.takeItem(action.getArgOne());
     }
 
     private void useAction(Action action) {

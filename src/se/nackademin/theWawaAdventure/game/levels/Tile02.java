@@ -16,16 +16,23 @@ public class Tile02 implements Level {
     }
 
     @Override
-    public List<Item> getContainer() {
-        return container;
+    public Item getItem(String itemName) {
+        if (container.size() > 0) {
+            if (container.get(0).getName().equalsIgnoreCase(itemName)) {
+                return container.remove(0);
+            }
+        }
+        return null;
     }
 
     @Override
     public String getDescription() {
-        String description = "You wake up in a forest, its kind of chilly and you dont know why you are here\n";
-        if (container.size() >0)
-            description = description + container.get(0).getDescription();
-        return description;
+        return "There is a glowing circle in this room and the air around you energizes your body.\n" +
+                "A small leather wallet is lying in the middle of the room, you pick it up from the ground.\n" +
+                "'This is it! I'M RICH!!!' you yell in excitement. Looking around the room you realize that \n" +
+                "there's a massive parking lot to the south and even better! A McDonald's! You enter the 'restaurant'\n" +
+                "and spend your riches on ten cheeseburgers and a diet coke (got to watch that figure)\n" +
+                "Well fed and poor people again you go home and never think of this again.";
     }
 
     public Enemy getEnemy() {

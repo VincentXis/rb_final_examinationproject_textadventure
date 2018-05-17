@@ -2,6 +2,7 @@ package se.nackademin.theWawaAdventure.game;
 
 import se.nackademin.theWawaAdventure.TheWawaAdventure;
 import se.nackademin.theWawaAdventure.game.levels.*;
+import se.nackademin.theWawaAdventure.item.Item;
 import se.nackademin.theWawaAdventure.player.Player;
 
 import java.util.ArrayList;
@@ -16,16 +17,19 @@ public class GameBoard {
     private Player player;
     private Map<Position, Level> worldMap;
     private Map<Level, List<Position>> connectedTiles;
-    private boolean updateScene = false;
+    private boolean newScene = false;
     private View view;
 
-    public GameBoard(TheWawaAdventure wawaAdventure) {
+    public GameBoard() {
         setupGameBoard();
         currentPosition = new Position(0, 0);
         previousPosition = currentPosition;
         currentLevel = getWorldMap().get(currentPosition);
         player = new Player();
-        this.view = wawaAdventure.getView();
+    }
+
+    public void setView(View view) {
+        this.view = view;
     }
 
 
@@ -77,6 +81,10 @@ public class GameBoard {
         return currentPosition;
     }
 
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -89,30 +97,68 @@ public class GameBoard {
         return connectedTiles;
     }
 
-    public void movePlayer(Position newPos) {
+    public boolean isNewScene() {
+        return newScene;
+    }
+
+    public void setNewScene(boolean newScene) {
+        this.newScene = newScene;
+    }
+
+    public void move(Position newPosition) {
         List<Position> possibleMoves = this.getConnectedTiles().get(this.currentLevel);
+        if (this.currentLevel.getEnemy().isAlive()) {
+            this.view.writeMessage("other directions are obscured you can only go back " +
+                    positionToDirectionString(previousPosition) +
+                    " unless the enemy is defeated"
+            );
+            if (this.previousPosition.equals(newPosition))
+                changeSceneAndUpdatePosition(newPosition);
+            return;
+        }
         for (Position possibleMove : possibleMoves) {
-            if (possibleMove.equals(newPos)) {
-                this.previousPosition = this.currentPosition;
-                this.currentPosition = newPos;
+            if (possibleMove.equals(newPosition)) {
+                changeSceneAndUpdatePosition(newPosition);
                 return;
             }
         }
         this.view.writeMessage("You walked into a tree...");
     }
-
+    private void changeSceneAndUpdatePosition(Position newPosition) {
+        this.previousPosition = this.currentPosition;
+        this.currentPosition = newPosition;
+        this.currentLevel = getWorldMap().get(currentPosition);
+        this.newScene = true;
+    }
     public List<String> possibleDirections() {
         List<String> possibleDirections = new ArrayList<>();
         for (Position connectedTile : getConnectedTiles().get(currentLevel)) {
-            if (connectedTile.getY() > this.getCurrentPosition().getY())
-                possibleDirections.add("north");
-            if (connectedTile.getY() < this.getCurrentPosition().getY())
-                possibleDirections.add("south");
-            if (connectedTile.getX() > this.getCurrentPosition().getX())
-                possibleDirections.add("east");
-            if (connectedTile.getX() < this.getCurrentPosition().getX())
-                possibleDirections.add("west");
+            possibleDirections.add(positionToDirectionString(connectedTile));
         }
         return possibleDirections;
+    }
+
+    private String positionToDirectionString(Position otherPosition) {
+        if (otherPosition.getY() > this.getCurrentPosition().getY())
+            return "north";
+        else if (otherPosition.getY() < this.getCurrentPosition().getY())
+            return "south";
+        else if (otherPosition.getX() > this.getCurrentPosition().getX())
+            return "east";
+        else
+            return "west";
+    }
+
+    public void dropItem(String item) {
+        this.view.writeMessage(getPlayer().dropItem(item));
+    }
+    public void takeItem(String itemName) {
+        Item item = this.currentLevel.getItem(itemName);
+        if (item != null) {
+            this.view.writeMessage("You pickup the " + item.getPickupDescription());
+            getPlayer().takeItem(item);
+        } else {
+            this.view.writeMessage("There is no such item here.");
+        }
     }
 }

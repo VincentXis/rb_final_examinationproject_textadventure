@@ -13,7 +13,7 @@ public class Lotion implements Item {
 
     @Override
     public String getDescription() {
-        return "under a bush you can see a half empty and rather slippery bottle fo lotion.";
+        return "Under the bush you can see a half empty and rather dirty looking bottle fo lotion.";
     }
 
     @Override

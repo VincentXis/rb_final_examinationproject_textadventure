@@ -20,23 +20,26 @@ public class View {
     }
 
     public void describeScene(Level currentLevel) {
-        String divider = "\n******************************************************";
-        String view = String.format("%s\n%s\n%s\n%s\n%s\n%s",
-                divider,
-                currentLevel,
-                divider,
+        String divOne = "************************************************************************************************************";
+        String divTwo = "------------------------------------------------------------------------------------------------------------";
+        String view = String.format("%s\n\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
+                divOne,
+                levelDrawer.drawLevel(currentLevel),
+                divTwo,
                 showPossibleDirections(),
-                divider,
+                divTwo,
+                gameBoard.getPlayer().showInventory(),
+                divTwo,
                 whatToDo
         );
+        cli.write(view);
     }
 
     private String showPossibleDirections() {
-        StringBuilder message;
         List<String> directions = this.gameBoard.possibleDirections();
         if (directions.size() == 1)
-            return "You can see a path leading to the" + directions.get(0) + " from here";
-        message = new StringBuilder("You can see paths leading to the ");
+            return "You can see a path leading to the " + directions.get(0) + " from here";
+        StringBuilder message = new StringBuilder("You can see paths leading to the ");
         while (directions.size() > 0) {
             if (directions.size() == 1)
                 message.append(" and ").append(directions.remove(0)).append(" from here");

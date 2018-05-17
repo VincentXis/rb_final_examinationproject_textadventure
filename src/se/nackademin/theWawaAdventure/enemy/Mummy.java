@@ -14,7 +14,7 @@ public class Mummy implements Enemy {
 
     @Override
     public String getDescription() {
-        return "a very old and ashy looking mummy";
+        return "The air is dry and a very old and ashy looking mummy stands on top of the altar looking at you.";
     }
 
     @Override

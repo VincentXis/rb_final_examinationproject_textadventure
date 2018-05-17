@@ -65,10 +65,6 @@ public class InputInterpreter {
                 return new Action.ActionBuilder(inputData[0])
                         .message(quitMessage())
                         .build();
-            case "restart":
-                return new Action.ActionBuilder(inputData[0])
-                        .message(restartMessage())
-                        .build();
         }
         return new Action.ActionBuilder("invalid")
                 .message(invalidInputMessage())
@@ -118,31 +114,32 @@ public class InputInterpreter {
 
     // Messages that are added to the zero argument actions.
     private String helpMessage() {
-        return String.format(
-                "There are several actions you can do, " +
-                        "the minimum amount of arguments needed after the action will be displayed to " +
-                        "the left of the action and a description where needed. " +
-                        "(the actions are not case sensitive)\n" +
-                        "\tValid actions are the following:\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s",
+        String helpText = String.format("%s\n%s\n\t%s\n",
+                "There are several actions you can do, the minimum amount of arguments needed after the action will be",
+                "displayed to the left of the action and a description where needed. (the actions are not case sensitive)",
+                "Valid actions are the following:");
+        String commandHelp = String.format("\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n\t%d, %s\n",
                 1, "go, eg. go north, go south etc.",
                 1, "take, eg. 'take fork'",
                 1, "drop, drop something in your inventory eg. drop hammer",
-                3, "use, use an item on something in the room eg. 'use sword on troll' or 'use torch on bush' do not forget to write 'on'",
+                3, "use, use an item on something in the room eg. 'use sword on troll' do not forget to write 'on'",
                 0, "quit, quit the application",
-                0, "restart, restart the game (restarts the session, loosing all progress)",
                 0, "help, shows this message ;)"
+        );
+        return String.format("%s%s", helpText, commandHelp);
+    }
+
+
+    private String quitMessage() {
+        String smallDiv = "------------------------------------";
+        return String.format("%s\n| %s |\n%s",
+                smallDiv,
+                "Thanks for playing this... game?",
+                smallDiv
         );
     }
 
-    private String restartMessage() {
-        return "\n\n\n\n\n\n\n\n\tStarting a new session.";
-    }
-
-    private String quitMessage() {
-        return "\n\tThanks for playing this... game?";
-    }
-
     private String invalidInputMessage() {
-        return "\tInvalid input, cannot create an action from type help for more details: " + userInput;
+        return "Invalid input, cannot create an action from type help for more details: " + userInput;
     }
 }
