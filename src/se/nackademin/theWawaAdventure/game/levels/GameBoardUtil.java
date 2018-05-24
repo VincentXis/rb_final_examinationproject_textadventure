@@ -3,10 +3,7 @@ package se.nackademin.theWawaAdventure.game.levels;
 import se.nackademin.theWawaAdventure.game.GameBoard;
 import se.nackademin.theWawaAdventure.game.Position;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Utility class fro the GameBoard class
@@ -50,14 +47,18 @@ public class GameBoardUtil {
         worldMap.put(pos12, tile12);
         worldMap.put(pos13, tile13);
 
-        connectedTiles.put(tile00, List.of(pos10));
-        connectedTiles.put(tile01, List.of(pos02, pos11));
-        connectedTiles.put(tile02, List.of(pos01, pos03));
-        connectedTiles.put(tile03, List.of(pos02, pos13));
-        connectedTiles.put(tile10, List.of(pos00, pos11));
-        connectedTiles.put(tile11, List.of(pos01, pos10, pos12));
-        connectedTiles.put(tile12, List.of(pos11, pos13));
-        connectedTiles.put(tile13, List.of(pos03, pos12));
+        connectedTiles.put(tile00, connectedPositions(pos10));
+        connectedTiles.put(tile01, connectedPositions(pos02, pos11));
+        connectedTiles.put(tile02, connectedPositions(pos01, pos03));
+        connectedTiles.put(tile03, connectedPositions(pos02, pos13));
+        connectedTiles.put(tile10, connectedPositions(pos00, pos11));
+        connectedTiles.put(tile11, connectedPositions(pos01, pos10, pos12));
+        connectedTiles.put(tile12, connectedPositions(pos11, pos13));
+        connectedTiles.put(tile13, connectedPositions(pos03, pos12));
+    }
+
+    private List<Position> connectedPositions(Position ... pos) {
+        return Arrays.asList(pos);
     }
 
     // Getters

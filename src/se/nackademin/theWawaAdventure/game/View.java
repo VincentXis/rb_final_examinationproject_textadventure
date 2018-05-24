@@ -34,7 +34,7 @@ public class View {
                 showPossibleDirections(),
                 divider,
                 gameBoard.getPlayer().showInventory(),
-                gameBoard.getCurrentLevel().getEnemy().getType(),
+                gameBoard.getCurrentLevel().getEnemy().isAlive()?gameBoard.getCurrentLevel().getEnemy().getType():"",
                 divider,
                 "What would you like to do? type 'help' for options.")
         );
